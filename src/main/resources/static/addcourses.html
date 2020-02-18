@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>Courses View Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.css" />
+     <style>
+    body {
+ background-image: url("bg.jpg");
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <h1 align="center">Add Products</h1>
+    <div class="container">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Product Name</span>
+            </div>
+            <input id="title" type="text" class="form-control" placeholder="Enter Name here..." aria-label="Username"
+                aria-describedby="basic-addon1">
+        </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Product Info</span>
+            </div>
+            <input id="summary" type="text" class="form-control" placeholder="Enter Summary here..." aria-label="Username"
+                aria-describedby="basic-addon1">
+        </div>
+         <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Product Category</span>
+            </div>
+            <input id="price" type="text" class="form-control" placeholder="Add a category here..." aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Product Price</span>
+            </div>
+            <input id="price" type="text" class="form-control" placeholder="Enter price here..." aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          
+            <button id="courseadd" class="btn btn-primary">ADD PRODUCT</button>
+        </div>
+       
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <script>
+	$("#courseadd").click(()=>{
+		console.log($('#title').val())
+		var course = {title:$('#title').val(), summary:$('#summary').val(), category:$('#category').val(), price:$('#price').val()}
+		console.log(course);
+		
+		
+		$.ajax({
+  		  url: 'api/courses',
+  		  method: 'POST',
+	  		dataType: 'json',
+	        contentType: 'application/json',
+  		  data: JSON.stringify(course)
+  		}).done(function() {
+  		 console.log('course added!!')
+  		 alert('course added!!');
+  		}); 
+	})
+       
+    </script>
+</body>
+
+</html>
